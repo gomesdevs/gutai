@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { useCart } from '@/hooks/useCart';
+import { CartDrawer } from '@/components/cart/CartDrawer';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -11,6 +13,8 @@ const navLinks = [
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { totalItems } = useCart();
 
   return (
     <>
@@ -41,6 +45,40 @@ export function Navigation() {
             isOpen && '-rotate-45 -translate-y-2'
           )}
         />
+      </button>
+
+      {/* Cart button — fixo canto superior direito */}
+      <button
+        onClick={() => setIsCartOpen(true)}
+        className={cn(
+          'fixed top-6 right-6 z-50 p-2',
+          'mix-blend-difference'
+        )}
+        aria-label="Abrir carrinho"
+      >
+        <div className="relative">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            className="text-[#e8e8e8]"
+          >
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+            <line x1="3" y1="6" x2="21" y2="6" />
+            <path d="M16 10a4 4 0 01-8 0" />
+          </svg>
+          {totalItems > 0 && (
+            <span
+              className="absolute -top-1 -right-1 w-4 h-4 bg-[#c0c0c0] text-[#0a0a0a] text-[10px] font-bold flex items-center justify-center"
+              style={{ fontFamily: 'var(--font-mono)' }}
+            >
+              {totalItems}
+            </span>
+          )}
+        </div>
       </button>
 
       {/* Overlay full-screen */}
@@ -76,6 +114,9 @@ export function Navigation() {
           GUTAI &copy; 2025
         </p>
       </nav>
+
+      {/* Cart Drawer */}
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
     </>
   );
 }
