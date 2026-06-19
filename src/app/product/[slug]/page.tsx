@@ -4,10 +4,9 @@ import { Navigation } from '@/components/layout/Navigation';
 import { Footer } from '@/components/layout/Footer';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { Badge } from '@/components/ui/Badge';
-import { Button } from '@/components/ui/Button';
 import { ProductGallery } from '@/components/product/ProductGallery';
 import { ProductSpecs } from '@/components/product/ProductSpecs';
-import { SizeSelectorWrapper } from '@/components/product/SizeSelectorWrapper';
+import { AddToCart } from '@/components/product/AddToCart';
 import { getProductBySlug, products } from '@/lib/products';
 import type { Metadata } from 'next';
 
@@ -106,13 +105,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
               {product.description}
             </p>
 
-            {/* Seletor de tamanho */}
-            <SizeSelectorWrapper sizes={product.sizes} />
-
-            {/* CTA */}
-            <Button className="w-full md:w-auto">
-              Adicionar ao Cofre
-            </Button>
+            {/* Seletor de tamanho + Adicionar ao carrinho */}
+            <AddToCart product={product} />
 
             {/* Specs */}
             <ProductSpecs product={product} />
