@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
 const geistMono = Geist_Mono({
@@ -19,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geistMono.variable} h-full antialiased dark`}>
+    <html lang="pt-BR" className={`${geistMono.variable} h-full antialiased dark`}>
       <body className="min-h-full flex flex-col bg-[#0a0a0a] text-[#e8e8e8]">
-        {children}
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );
