@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { Footer } from '@/components/layout/Footer';
 import { NoiseOverlay } from '@/components/ui/NoiseOverlay';
 import { Button } from '@/components/ui/Button';
