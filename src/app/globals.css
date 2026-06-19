@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+/* GUTAI Design Tokens — Textured Brutalism */
+:root {
+  /* Blacks with texture — never flat #000000 */
+  --color-black-deep: #0a0a0a;
+  --color-black-textured: #1a1a1a;
+  --color-black-leather: #141010;
+  
+  /* Silver and metal */
+  --color-silver: #c0c0c0;
+  --color-silver-oxidized: #8a8a8a;
+  --color-silver-bright: #e8e8e8;
+  
+  /* Leather tones */
+  --color-leather: #3d2b1f;
+  --color-leather-dark: #2a1d15;
+  
+  /* Accent */
+  --color-accent: #e8e8e8;
+  --color-accent-muted: #666666;
+  
+  /* Functional */
+  --background: var(--color-black-deep);
+  --foreground: var(--color-silver-bright);
+  
+  /* Typography */
+  --font-gothic: 'Times New Roman', serif;
+  --font-mono: 'Courier New', monospace;
+  --font-sans: 'Helvetica Neue', sans-serif;
+  
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+  
+  /* Borders — thick and deliberate */
+  --border-thin: 1px solid var(--color-silver-oxidized);
+  --border-medium: 2px solid var(--color-silver-oxidized);
+  --border-thick: 4px solid var(--color-silver);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-silver: var(--color-silver);
+  --color-silver-oxidized: var(--color-silver-oxidized);
+  --color-leather: var(--color-leather);
+  --font-gothic: var(--font-gothic);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
+}
+
+/* Base styles */
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Textured noise overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Gothic headline style */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-gothic);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+/* Monospace for technical elements */
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+/* Brutalist buttons */
+.btn-brutalist {
+  background: var(--color-silver);
+  color: var(--color-black-deep);
+  border: var(--border-thick);
+  padding: var(--space-sm) var(--space-lg);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-brutalist:hover {
+  background: var(--color-black-deep);
+  color: var(--color-silver);
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--color-silver);
+}
+
+/* Heavy borders */
+.border-heavy {
+  border: var(--border-thick);
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 2rem;
+    --space-2xl: 4rem;
+  }
+}
