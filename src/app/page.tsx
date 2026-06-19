@@ -37,7 +37,7 @@ export default function Home() {
       <EditorialSection
         label="Filosofia"
         title="Contra o Ordinário."
-        description="GUTAI não é moda. É抵抗. Cada artefato é um documento vivo contra o descartável."
+        description="GUTAI não é moda. É resistência. Cada artefato é um documento vivo contra o descartável."
       />
 
       <Footer />
