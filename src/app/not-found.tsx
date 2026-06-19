@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function NotFound() {
   return (
     <div className="flex flex-col min-h-screen items-center justify-center px-8">
@@ -20,12 +22,12 @@ export default function NotFound() {
         >
           O que você procura não existe — ou nunca existiu.
         </p>
-        <a
+        <Link
           href="/"
           className="inline-flex items-center justify-center bg-[#c0c0c0] text-[#0a0a0a] border-4 border-[#c0c0c0] px-6 py-3 font-mono font-bold text-xs uppercase tracking-[0.1em] transition-all duration-200 hover:bg-[#0a0a0a] hover:text-[#c0c0c0] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#c0c0c0]"
         >
           Voltar ao Início
-        </a>
+        </Link>
       </div>
     </div>
   );
