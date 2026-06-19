@@ -1,8 +1,8 @@
 'use client';
 
+import Link from 'next/link';
 import { useCart } from '@/hooks/useCart';
 import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/Button';
 
 interface CartDrawerProps {
   isOpen: boolean;
@@ -136,9 +136,19 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
                 {subtotal} EUR
               </span>
             </div>
-            <Button className="w-full">
+            <Link
+              href="/checkout"
+              onClick={onClose}
+              className={cn(
+                'w-full inline-flex items-center justify-center',
+                'bg-[#c0c0c0] text-[#0a0a0a] border-4 border-[#c0c0c0]',
+                'px-6 py-3 font-mono font-bold text-xs uppercase tracking-[0.1em]',
+                'transition-all duration-200',
+                'hover:bg-[#0a0a0a] hover:text-[#c0c0c0] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[4px_4px_0_#c0c0c0]'
+              )}
+            >
               Proceed to Checkout
-            </Button>
+            </Link>
           </div>
         )}
       </div>
