@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { useLenis } from 'lenis/react';
 
 interface EditorialSectionProps {
@@ -21,7 +22,7 @@ export function EditorialSection({
   const sectionRef = useRef<HTMLElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
 
-  useLenis((lenis) => {
+  useLenis(() => {
     if (!sectionRef.current || !imageRef.current) return;
 
     const rect = sectionRef.current.getBoundingClientRect();
@@ -68,11 +69,12 @@ export function EditorialSection({
           className="aspect-[3/4] bg-[#141010] border border-[#1a1a1a] relative overflow-hidden"
         >
           {imageUrl ? (
-            <img
+            <Image
               src={imageUrl}
               alt={imageAlt || title}
               className="w-full h-full object-cover"
-              loading="lazy"
+              fill
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : (
             <div className="absolute inset-0 flex items-center justify-center">
